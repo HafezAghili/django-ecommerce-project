@@ -1,0 +1,246 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title>HafezAghili's Nuts</title>
+	
+	
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesHome.css' %}" />
+    <!--https://boxicons.com/-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+
+	<!-- meta tags -->
+	<meta charset="UTF-8">
+	<meta name="keywords" content="NutsWebsite ,HafezAghili">
+	<meta name="description" content="HafezAghili'NutsWebsite">
+	<meta name="author" content="HafezAghili">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <!-- navbar -->
+    <header>
+        <a href="#" class="logo">
+            <img src="{% static 'images/logo.png'%}" title="logo" alt="HafezAghili'nuts logo">
+        </a>
+
+        <!-- menu icon-->
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#branches">Branches</a></li>
+        </ul>
+
+        <!-- icons -->
+        <div class="header-icon">
+            <i class='bx bx-cart-alt'></i>
+            <i class='bx bx-search' id="search-icon"></i>
+        </div>
+
+        <!-- search -->
+        <div class="search-box">
+            <input type="search" name="" id="" placeholder="Search Here . . .">
+        </div>
+    </header>
+
+        <!-- home -->
+        <section class="home" id="home">
+            <div class="home-text">
+                <h1>Start your day <br> with Peanut Butter</h1>
+                <p>Peanut butter is a food paste or spread made from ground, dry-roasted peanuts. It commonly contains additional ingredients that modify the taste or texture, such as salt, sweeteners, or emulsifiers.</p>
+                <a href="{% url 'comingsoon' %}" class="btn">Shop Now</a>
+            </div>
+            
+            <div class="home-img">
+                <img class="home-img1" src="{% static 'images/homeItem.png'%}" alt="homeItem">
+            </div>
+
+        </section>
+
+        <!-- about -->
+        <section class="about" id="about">
+            <div class="about-img">
+                <img src="{% static 'images/aboutItem.png'%}" alt="aboutItem">
+            </div>
+
+            <div class="about-text">
+                <h2>Our History</h2>
+                <p>This nut shop is considered one of the best nut exporters in the world, which is always noted for the quality of its products</p>
+                <p>Hafez Aghili's nut shop was established in 2023 by Amir Hossein Hafez Aghili.</p>
+                <p>He is a computer engineer, so he has put a lot of emphasis on online sales.</p>
+                <br>
+                <a href="{% url 'comingsoon' %}" class="btn">Learn More</a>
+            </div>
+        </section>
+
+            <!-- products -->
+            <section class="products" id="products">
+                <div class="heading">
+                    <h2>Our popular products</h2>
+                </div>
+
+                <!-- container -->
+                <div class="products-container">
+                    <div class="box">
+                        <img src="{% static 'images/pic1.jpg'%}" alt="Pistachio - 50gm">
+                        <h3>Pistachios - 50gm</h3>
+                        <div class="content">
+                            <span>$25</span>
+                            <a href="#"> Add to cart</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/pic2.jpg'%}" alt="Cashews - 50gm">
+                        <h3>Cashews - 50gm</h3>
+                        <div class="content">
+                            <span>$20</span>
+                            <a href="#"> Add to cart</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/pic3.jpg'%}" alt="Mixed Nuts - 50gm">
+                        <h3>Mixed Nuts - 50gm</h3>
+                        <div class="content">
+                            <span>$23</span>
+                            <a href="#"> Add to cart</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/pic4.jpg'%}" alt="Almonds - 50gm">
+                        <h3>Almonds - 50gm</h3>
+                        <div class="content">
+                            <span>$18</span>
+                            <a href="#"> Add to cart</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/pic5.jpg'%}" alt="Smoked Almonds - 25gm">
+                        <h3>Smoked Almonds - 25gm</h3>
+                        <div class="content">
+                            <span>$12</span>
+                            <a href="#"> Add to cart</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/pic6.jpg'%}" alt="Trail Mix - 25gm">
+                        <h3>Trail Mix - 25gm</h3>
+                        <div class="content">
+                            <span>$15</span>
+                            <a href="#"> Add to cart</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- branches -->
+            <section class="branches" id="branches">
+                <div class="heading">
+                    <h2>Our Top Branches</h2>
+                </div>
+
+                <!-- container -->
+                <div class="branches-container">
+                    <div class="box">
+                        <div class="stars">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star-half"></i>
+                            <h2>branch name</h2>
+                            <p>address</p>
+                            <img src="{% static 'images/store1.jpg'%}" alt="store">
+                        </div>
+                    </div>
+
+
+                    <div class="box">
+                        <div class="stars">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star-half"></i>
+                            <h2>branch name</h2>
+                            <p>address</p>
+                            <img src="{% static 'images/store2.jpg'%}" alt="store">
+                        </div>
+                    </div>
+
+
+                    <div class="box">
+                        <div class="stars">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star-half"></i>
+                            <h2>branch name</h2>
+                            <p>address</p>
+                            <img src="{% static 'images/store3.jpg'%}" alt="store">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- footer -->
+            <section class="footer">
+                <div class="footer-box">
+                    <h2>HafezAghili's Nut</h2>
+                    <p>text</p>
+                    <div class="social">
+                        <a href="{% url 'comingsoon' %}"><i class='bx bxl-facebook' ></i></a>
+                        <a href="{% url 'comingsoon' %}"><i class='bx bxl-twitter' ></i></a>
+                        <a href="{% url 'comingsoon' %}"><i class='bx bxl-instagram' ></i></a>
+                        <a href="{% url 'comingsoon' %}"><i class='bx bxl-telegram' ></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-box">
+                    <h3>Support</h3>
+                    <li><a href="{% url 'comingsoon' %}">Products</a></li>
+                    <li><a href="{% url 'comingsoon' %}">Help & Support</a></li>
+                    <li><a href="{% url 'comingsoon' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'comingsoon' %}">Terms Of Use</a></li>
+                </div>
+
+                <div class="footer-box">
+                    <h3>View Guides</h3>
+                    <li><a href="{% url 'comingsoon' %}">Features</a></li>
+                    <li><a href="{% url 'comingsoon' %}">Careers</a></li>
+                    <li><a href="{% url 'comingsoon' %}">Blog Posts</a></li>
+                    <li><a href="{% url 'comingsoon' %}">Our Branches</a></li>
+                </div>
+
+                <div class="footer-box">
+                    <h3>Contact</h3>
+                    <div class="contact">
+                        <span><i class='bx bxs-map' ></i> Tehran , Iran</span>
+                        <span><i class='bx bxs-phone' ></i> +98 912 606 7713</span>
+                        <span><i class='bx bxs-envelope' ></i> nut@shop.com</span>
+                </div>
+
+            </section>
+
+            <!-- copyright -->
+            <div class="copyright">
+                <p>Copyright &#169; 2023 AmirHossein HafezAghili All Right Reserved</p>
+            </div>
+
+
+    <script type="text/javascript" src="{% static 'js/scriptHome.js'%}"></script>
+</body>
+</html>
