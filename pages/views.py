@@ -23,7 +23,7 @@ class ProductDetailView(DetailView):
 
 class ProductCreateView(CreateView):
     model = Product
-    template_name = 'product_new.html'
+    template_name = 'product_create.html'
     fields = '__all__'
 
 class ProductUpdateView(UpdateView): 
