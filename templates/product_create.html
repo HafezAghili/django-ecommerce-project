@@ -1,0 +1,12 @@
+{% extends 'product_base.html' %}
+{% block content %}
+<br><br><br>
+
+<h1>New Product</h1>
+<form action="" method="post">{% csrf_token %}
+<!-- {{ form.as_p }}  -->
+<label> product name </label> {{ form.name }} <br>
+<input type="submit" value="Save">
+</form>
+
+{% endblock content %}

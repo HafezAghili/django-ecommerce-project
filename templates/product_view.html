@@ -1,0 +1,13 @@
+{% extends 'product_base.html' %}
+{% block content %}
+<br><br><br>
+
+{% for product in product_list %}
+<div class="post-entry">
+<h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+<p>{{ product.price }}</p>
+<p><img src="{{ product.img.url }}"></p>
+</div>
+{% endfor %}
+
+{% endblock content %}
