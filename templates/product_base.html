@@ -1,0 +1,97 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <title>HafezAghili's Nuts:shop</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesHome.css' %}" />
+    <!--https://boxicons.com/-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+</head>
+
+<body>
+    <!-- navbar -->
+    <header>
+        <a href="#" class="logo">
+            <img src="{% static 'images/logo.png'%}" title="logo" alt="HafezAghili'nuts logo">
+        </a>
+
+        <!-- menu icon-->
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#branches">Branches</a></li>
+        </ul>
+
+        <!-- icons -->
+        <div class="header-icon">
+            <i class='bx bx-cart-alt'></i>
+            <i class='bx bx-search' id="search-icon"></i>
+        </div>
+
+        <!-- search -->
+        <div class="search-box">
+            <input type="search" name="" id="" placeholder="Search Here . . .">
+        </div>
+    </header>
+
+    
+
+    {% block content %}
+    {% endblock content %}
+
+
+
+    <!-- footer -->
+    <section class="footer">
+        <div class="footer-box">
+            <h2>HafezAghili's Nut</h2>
+            <p>text</p>
+            <div class="social">
+                <a href="{% url 'comingsoon' %}"><i class='bx bxl-facebook' ></i></a>
+                <a href="{% url 'comingsoon' %}"><i class='bx bxl-twitter' ></i></a>
+                <a href="{% url 'comingsoon' %}"><i class='bx bxl-instagram' ></i></a>
+                <a href="{% url 'comingsoon' %}"><i class='bx bxl-telegram' ></i></a>
+            </div>
+        </div>
+
+        <div class="footer-box">
+            <h3>Support</h3>
+            <li><a href="{% url 'comingsoon' %}">Products</a></li>
+            <li><a href="{% url 'comingsoon' %}">Help & Support</a></li>
+            <li><a href="{% url 'comingsoon' %}">Privacy Policy</a></li>
+            <li><a href="{% url 'comingsoon' %}">Terms Of Use</a></li>
+        </div>
+
+        <div class="footer-box">
+            <h3>View Guides</h3>
+            <li><a href="{% url 'comingsoon' %}">Features</a></li>
+            <li><a href="{% url 'comingsoon' %}">Careers</a></li>
+            <li><a href="{% url 'comingsoon' %}">Blog Posts</a></li>
+            <li><a href="{% url 'comingsoon' %}">Our Branches</a></li>
+        </div>
+
+        <div class="footer-box">
+            <h3>Contact</h3>
+            <div class="contact">
+                <span><i class='bx bxs-map' ></i> Tehran , Iran</span>
+                <span><i class='bx bxs-phone' ></i> +98 912 606 7713</span>
+                <span><i class='bx bxs-envelope' ></i> nut@shop.com</span>
+        </div>
+
+    </section>
+
+    <!-- copyright -->
+    <div class="copyright">
+        <p>Copyright &#169; 2023 AmirHossein HafezAghili All Right Reserved</p>
+    </div>
+
+
+<script type="text/javascript" src="{% static 'js/scriptHome.js'%}"></script>
+</body>
+</html>
