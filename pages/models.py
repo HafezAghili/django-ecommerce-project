@@ -22,7 +22,7 @@ class Product(models.Model):
     expiration_at = models.DateField(default=datetime.now()+timedelta(days=730))
 
     def __str__(self):
-        return self.name
+        return f'{self.name} {self.city}'
     
     def get_absolute_url(self):
         return reverse('product_detail', args=[str(self.id)])
@@ -61,7 +61,7 @@ class Inventory(models.Model):
     phone = models.CharField(max_length=50) 
 
     def __str__(self):
-        return self.name+' '+self.city
+        return self.name
     
 
 class Cart(models.Model):
