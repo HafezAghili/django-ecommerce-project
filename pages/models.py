@@ -10,19 +10,17 @@ import accounts.models
 class Product(models.Model):
     name = models.CharField(max_length=50 , blank=False , null=False)
     price = models.DecimalField(max_digits=10,decimal_places=2)
-    quantity = models.IntegerField(default=30)
     img = models.ImageField()
     quality = models.CharField(max_length= 50 , choices=[('high quality','high quality') ,
                                                          ('medium quality','medium quality') ,
                                                          ('low quality','low quality')])
     supplier = models.ManyToManyField('Supplier')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    city = models.ForeignKey('City', on_delete=models.CASCADE)
     created_at   = models.DateTimeField(auto_now_add=True) 
     expiration_at = models.DateField(default=datetime.now()+timedelta(days=730))
 
     def __str__(self):
-        return f'{self.name} {self.city}'
+        return self.name
     
     def get_absolute_url(self):
         return reverse('product_detail', args=[str(self.id)])
@@ -62,7 +60,16 @@ class Inventory(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+
+class InventoryProduct(models.Model):
+    name = models.ForeignKey(Product, on_delete=models.CASCADE)
+    inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=20)
+
+    def __str__(self):
+        return self.name
+     
 
 class Cart(models.Model):
     user = models.ForeignKey('accounts.CustomUser' , on_delete=models.CASCADE)
@@ -80,7 +87,7 @@ class CartItem(models.Model):
                                                                             ('Sent','Sent')])
 
     def __str__(self):
-        return self.cart+' '+self.product
+        return f'{self.cart} {self.product}'
     
 
 class Order(models.Model):
@@ -99,4 +106,4 @@ class OrderItem(models.Model):
                                                                             ('Sent','Sent')])
 
     def __str__(self):
-        return self.order+' '+self.product
+        return f'{self.order} {self.product}'
