@@ -2,13 +2,30 @@
 {% block content %}
 <br><br><br>
 
-<div class="post-entry">
-    <h2>name: {{ product.name }}</h2>
-    <p>price: {{ product.price }}</p>
-    <p>category: {{ product.category }}</p>
-    <img src="{{ product.img.url }}">
+<div class="post-entry"> 
+    <div class="products-container">
+        <div class="box">
+            <img src="{{ product.img.url }}" alt={{ product.name }}>
+            <h3>{{ product.name }}</h3>
+
+            <div class="content">
+                <span style="text-align:right;"><a href="#">Add to cart</a></span>
+            </div>
+
+            <br>
+
+            <div class="content">
+                <span>${{ product.price }}</span>
+                <span>Category : {{ product.category }}</span> 
+                <span>Quality : {{ product.quality }}</span> 
+                <span>Supplier : {{ product.supplier }}</span> 
+                <span>Expiration at : {{ product.expiration_at }}</span>
+            </div>
+        </div>
+    </div>
 </div>
-    
+
+<br>
 <p><a href="{% url 'product_update' product.pk %}" class="product_update"><b> + Edit product </b></a></p>
 <p><a href="{% url 'product_delete' product.pk %}" class="product_delete"><b> + Delete product </b></a></p>
 

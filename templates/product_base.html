@@ -14,15 +14,15 @@
 <body>
     <!-- navbar -->
     <header>
-        <a href="#" class="logo">
-            <img src="{% static 'images/logo.png'%}" title="logo" alt="HafezAghili'nuts logo">
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'images/logo.png'%}" alt="HafezAghili'nuts logo">
         </a>
 
         <!-- menu icon-->
         <i class='bx bx-menu' id="menu-icon"></i>
 
         <ul class="navbar">
-            <li><a href="#home">Home</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#products">Products</a></li>
             <li><a href="#branches">Branches</a></li>

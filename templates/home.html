@@ -23,8 +23,8 @@
 <body>
     <!-- navbar -->
     <header>
-        <a href="#" class="logo">
-            <img src="{% static 'images/logo.png'%}" title="logo" alt="HafezAghili'nuts logo">
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'images/logo.png'%}" alt="HafezAghili'nuts logo">
         </a>
 
         <!-- menu icon-->
@@ -54,7 +54,7 @@
             <div class="home-text">
                 <h1>Start your day <br> with Peanut Butter</h1>
                 <p>Peanut butter is a food paste or spread made from ground, dry-roasted peanuts. It commonly contains additional ingredients that modify the taste or texture, such as salt, sweeteners, or emulsifiers.</p>
-                <a href="{% url 'comingsoon' %}" class="btn">Shop Now</a>
+                <a href="{% url 'product_view' %}" class="btn">Shop Now</a>
             </div>
             
             <div class="home-img">
@@ -74,6 +74,7 @@
                 <p>This nut shop is considered one of the best nut exporters in the world, which is always noted for the quality of its products</p>
                 <p>Hafez Aghili's nut shop was established in 2023 by Amir Hossein Hafez Aghili.</p>
                 <p>He is a computer engineer, so he has put a lot of emphasis on online sales.</p>
+                <p>The nut shop has been in business for over a year and has grown to become one of the most well-known and trusted nut exporters on the global market, thanks to the dedication and innovation of its founder.</p>
                 <br>
                 <a href="{% url 'comingsoon' %}" class="btn">Learn More</a>
             </div>
@@ -142,8 +143,9 @@
                     </div>
 
                 </div>
+                <br><br>
+                <div style="text-align:center;"><a href="{% url 'product_view' %}" class="btn">Shop Now</a></div>
             </section>
-
 
             <!-- branches -->
             <section class="branches" id="branches">
@@ -159,9 +161,9 @@
                             <i class="bx bxs-star"></i>
                             <i class="bx bxs-star"></i>
                             <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star-half"></i>
-                            <h2>branch name</h2>
-                            <p>address</p>
+                            <i class="bx bxs-star"></i>
+                            <h2>Tehran branch</h2>
+                            <p>Tehran Grand Bazaar<br>021 3654 0584</p><br>
                             <img src="{% static 'images/store1.jpg'%}" alt="store">
                         </div>
                     </div>
@@ -174,8 +176,8 @@
                             <i class="bx bxs-star"></i>
                             <i class="bx bxs-star"></i>
                             <i class="bx bxs-star-half"></i>
-                            <h2>branch name</h2>
-                            <p>address</p>
+                            <h2>Isfahan branch</h2>
+                            <p>Isfahan Grand Bazaar<br>031 3222 2173</p><br>
                             <img src="{% static 'images/store2.jpg'%}" alt="store">
                         </div>
                     </div>
@@ -188,8 +190,8 @@
                             <i class="bx bxs-star"></i>
                             <i class="bx bxs-star"></i>
                             <i class="bx bxs-star-half"></i>
-                            <h2>branch name</h2>
-                            <p>address</p>
+                            <h2>Shiraz branch</h2>
+                            <p>Vakil Bazaar<br>071 3224 4381</p><br>
                             <img src="{% static 'images/store3.jpg'%}" alt="store">
                         </div>
                     </div>
