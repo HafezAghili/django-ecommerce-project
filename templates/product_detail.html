@@ -15,10 +15,16 @@
             <br>
 
             <div class="content">
-                <span>${{ product.price }}</span>
+                <span>Price : ${{ product.price }}</span>
                 <span>Category : {{ product.category }}</span> 
                 <span>Quality : {{ product.quality }}</span> 
-                <span>Supplier : {{ product.supplier }}</span> 
+                <span>
+                    <ul>
+                    {% for supplier in supplier_list %}
+                      <li>Supplier : {{ supplier.name }}</li>
+                    {% endfor %}
+                    </ul>
+                </span> 
                 <span>Expiration at : {{ product.expiration_at }}</span>
             </div>
         </div>

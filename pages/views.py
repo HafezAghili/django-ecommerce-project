@@ -20,6 +20,12 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_detail.html'
 
+    
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['supplier_list'] = self.object.supplier.all()
+        return context
+
 
 class ProductCreateView(CreateView):
     model = Product
