@@ -1,0 +1,115 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .card {
+    margin: 0 auto;
+    margin-top: 2rem;
+    max-width: 30rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-out 1;
+  }
+  
+  .card-header {
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:focus,
+  .btn-primary.focus {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  
+  .btn-primary.disabled,
+  .btn-primary:disabled {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active {
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+.form-control::placeholder {
+  color: #999;
+}
+
+@media (min-width: 768px) {
+  .card {
+    max-width: 40rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    max-width: 50rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    max-width: 60rem;
+  }
+}
+
+/* Center content */
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+}
+
+/* Custom background color */
+.container-fluid {
+  background-color: #f2f2f2;
+}
+
+/* Custom input styles */
+.input-group-prepend .input-group-text {
+  background-color: #f7f7f7;
+  border-color: #e5e5e5;
+}
+
+.input-group input[type="text"] {
+  border-color: #e5e5e5;
+  border-radius: 0.25rem;
+}
+
+.input-group input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}

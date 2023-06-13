@@ -1,10 +1,14 @@
 from django.views.generic import TemplateView , CreateView , ListView , UpdateView  , DetailView , DeleteView
 from .models import *
 from django.urls import reverse_lazy #for delete
+from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-class HomeView(TemplateView):
+class HomeView(LoginRequiredMixin ,TemplateView):
     template_name = 'home.html'
 
 class ComingSoonView(TemplateView):
