@@ -14,6 +14,9 @@ class HomeView(TemplateView):
 class ComingSoonView(TemplateView):
     template_name = 'ComingSoon.html'
 
+class PanelView(TemplateView):
+    template_name = 'panel.html'
+
 
 # Product views
 class ProductListView(LoginRequiredMixin , ListView):
