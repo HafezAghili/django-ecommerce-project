@@ -41,7 +41,17 @@
         <div class="header-icon">
             <i class='bx bx-cart-alt'></i>
             <i class='bx bx-search' id="search-icon"></i>
-            <i class='bx bx-user-circle'></i>
+            
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">
+                <i class='bx bx-user-circle'></i>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}">
+                <i class='bx bx-user-circle'></i>
+            </a>
+            {% endif %}
+
         </div>
 
         <!-- search -->
@@ -245,5 +255,6 @@
 
 
     <script type="text/javascript" src="{% static 'js/scriptHome.js'%}"></script>
+    
 </body>
 </html>

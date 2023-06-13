@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+</head>
+<body>
+    <h1>Logout</h1>
+    <p>Are you sure you want to log out?</p>
+    <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+        <input type="submit" value="Yes, Log out">
+        <a href="{% url 'home' %}">No, Cancel</a>
+    </form>
+
+    {% if next %}
+        <p>Next, return to: {{ next }}</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <p>You have been logged out. Please log in again.</p>
+    {% else %}
+        <p>You have been logged out.</p>
+    {% endif %}
+</body>
+</html>
+

@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-class HomeView(LoginRequiredMixin ,TemplateView):
+class HomeView(TemplateView):
     template_name = 'home.html'
 
 class ComingSoonView(TemplateView):
@@ -16,7 +16,7 @@ class ComingSoonView(TemplateView):
 
 
 # Product views
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin , ListView):
     model = Product
     template_name = 'product_view.html'
 
