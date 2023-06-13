@@ -1,17 +1,45 @@
-<!DOCTYPE html>
-<html>
+{% extends 'register_base.html' %}
+{% load static %}
+
 <head>
     <title>Logout</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesLogout.css' %}">
+    {% endblock %}
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU10w440vq8XeBPOrYEONXDKmSpa4j6I4TjcKPEQ2Or5J6"
+    crossorigin="anonymous">
 </head>
-<body>
-    <h1>Logout</h1>
+
+{% block content %}
+<br>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card">
+          <div class="card-header">Logout</div>
+          <div class="card-body">
+
     <p>Are you sure you want to log out?</p>
+    <br>
     <form action="{% url 'logout' %}" method="post">
     {% csrf_token %}
-        <input type="submit" value="Yes, Log out">
-        <a href="{% url 'home' %}">No, Cancel</a>
+        <!-- <input type="submit" value="Yes, Log out"> -->
+        <button class="btn btn-primary btn-block" type="submit">Yes</button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <a href="{% url 'home' %}"> &nbsp;&nbsp;&nbsp;&nbsp;No, Cancel</a>
     </form>
+</div>
+</div>
+</div>
+</div>
+<br>
+</div>
+{% endblock %}
 
+    <!--
     {% if next %}
         <p>Next, return to: {{ next }}</p>
     {% endif %}
@@ -21,6 +49,7 @@
     {% else %}
         <p>You have been logged out.</p>
     {% endif %}
-</body>
-</html>
+    -->
+
+
 
