@@ -5,11 +5,18 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 # Create your views here.
 
 class HomeView(TemplateView):
     template_name = 'home.html'
+    
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            if request.user.is_superuser:
+                return redirect('panel/')
+        return super().get(request, *args, **kwargs)
 
 class ComingSoonView(TemplateView):
     template_name = 'ComingSoon.html'
