@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br>
+
+<!-- products -->
+<section class="products" id="products">
+    <div class="heading">
+        <h2>Our new products</h2>
+    </div>
+
+    <!-- container -->
+    {% for product in product_list %}
+    <div class="post-entry"> 
+    <div class="products-container">
+        <div class="box">
+            <img src="{{ product.img.url }}" alt={{ product.name }}>
+            <h3><a href="{% url 'product_detail_admin' product.pk %}">{{ product.name }}</a></h3>
+            <div class="content">
+                <span>${{ product.price }}</span>
+                <a href="#">Add to cart</a>
+            </div>
+        </div>
+
+        <!-- تکرار۱-->
+        <div class="box">
+            <img src="{{ product.img.url }}" alt={{ product.name }}>
+            <h3><a href="{% url 'product_detail_admin' product.pk %}">{{ product.name }}</a></h3>
+            <div class="content">
+                <span>${{ product.price }}</span>
+                <a href="#">Add to cart</a>
+            </div>
+        </div>
+
+        <!-- تکرار۲-->
+        <div class="box">
+            <img src="{{ product.img.url }}" alt={{ product.name }}>
+            <h3><a href="{% url 'product_detail_admin' product.pk %}">{{ product.name }}</a></h3>
+            <div class="content">
+                <span>${{ product.price }}</span>
+                <a href="#">Add to cart</a>
+            </div>
+        </div>
+
+    </div>
+    </div>  
+    {% endfor %}
+</section>
+
+<!--
+{% for product in product_list %}
+<div class="post-entry">
+<h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+<p>{{ product.price }}</p>
+<p><img src="{{ product.img.url }}"></p>
+</div>
+{% endfor %}
+-->
+
+{% endblock content %}

@@ -15,11 +15,12 @@ class ComingSoonView(TemplateView):
     template_name = 'ComingSoon.html'
 
 class PanelView(TemplateView):
-    template_name = 'panel.html'
+    template_name = 'panel/panel.html'
 
 
+#USER VIEWS-------------------
 # Product views
-class ProductListView(LoginRequiredMixin , ListView):
+class ProductListView(ListView):
     model = Product
     template_name = 'product_view.html'
 
@@ -34,17 +35,60 @@ class ProductDetailView(DetailView):
         return context
 
 
+#ADMIN VIEWS-------------------
+# Category views
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'panel/category/category_view.html'
+
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = 'panel/category/category_detail.html'
+
+class CategoryCreateView(CreateView):
+    model = Category
+    template_name = 'panel/category/category_create.html'
+    fields = '__all__'
+
+class CategoryUpdateView(UpdateView): 
+    model = Category
+    template_name = 'panel/category/category_update.html'
+    fields =  '__all__'
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'panel/category/category_delete.html'
+    success_url = reverse_lazy('product_view')
+
+
+# Product views
+class ProductListViewAdmin(ListView):
+    model = Product
+    template_name = 'panel/product/product_view_admin.html'
+
+class ProductDetailViewAdmin(DetailView):
+    model = Product
+    template_name = 'panel/product/product_detail_admin.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailViewAdmin, self).get_context_data(**kwargs)
+        context['supplier_list'] = self.object.supplier.all()
+        return context
+
+
 class ProductCreateView(CreateView):
     model = Product
-    template_name = 'product_create.html'
+    template_name = 'panel/product/product_create.html'
     fields = '__all__'
+    success_url = reverse_lazy('product_view_admin')
 
 class ProductUpdateView(UpdateView): 
     model = Product
-    template_name = 'product_update.html'
+    template_name = 'panel/product/product_update.html'
     fields =  '__all__'
+    success_url = reverse_lazy('product_view_admin')
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'product_delete.html'
-    success_url = reverse_lazy('product_view')
+    template_name = 'panel/product/product_delete.html'
+    success_url = reverse_lazy('product_view_admin')
