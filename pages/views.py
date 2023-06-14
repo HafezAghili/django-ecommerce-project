@@ -49,16 +49,72 @@ class CategoryCreateView(CreateView):
     model = Category
     template_name = 'panel/category/category_create.html'
     fields = '__all__'
+    success_url = reverse_lazy('category_view')
 
 class CategoryUpdateView(UpdateView): 
     model = Category
     template_name = 'panel/category/category_update.html'
     fields =  '__all__'
+    success_url = reverse_lazy('category_view')
 
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'panel/category/category_delete.html'
-    success_url = reverse_lazy('product_view')
+    success_url = reverse_lazy('category_view')
+
+
+# Supplier views
+class SupplierListView(ListView):
+    model = Supplier
+    template_name = 'panel/supplier/supplier_view.html'
+
+class SupplierDetailView(DetailView):
+    model = Supplier
+    template_name = 'panel/supplier/supplier_detail.html'
+
+class SupplierCreateView(CreateView):
+    model = Supplier
+    template_name = 'panel/supplier/supplier_create.html'
+    fields = '__all__'
+    success_url = reverse_lazy('supplier_view')
+
+class SupplierUpdateView(UpdateView): 
+    model = Supplier
+    template_name = 'panel/supplier/supplier_update.html'
+    fields =  '__all__'
+    success_url = reverse_lazy('supplier_view')
+
+class SupplierDeleteView(DeleteView):
+    model = Supplier
+    template_name = 'panel/supplier/supplier_delete.html'
+    success_url = reverse_lazy('supplier_view')
+
+
+# City views
+class CityListView(ListView):
+    model = City
+    template_name = 'panel/city/city_view.html'
+
+class CityDetailView(DetailView):
+    model = City
+    template_name = 'panel/city/city_detail.html'
+
+class CityCreateView(CreateView):
+    model = City
+    template_name = 'panel/city/city_create.html'
+    fields = '__all__'
+    success_url = reverse_lazy('city_view')
+
+class CityUpdateView(UpdateView): 
+    model = City
+    template_name = 'panel/city/city_update.html'
+    fields =  '__all__'
+    success_url = reverse_lazy('city_view')
+
+class CityDeleteView(DeleteView):
+    model = City
+    template_name = 'panel/city/city_delete.html'
+    success_url = reverse_lazy('city_view')    
 
 
 # Product views
