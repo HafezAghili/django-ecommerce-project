@@ -1,84 +1,95 @@
+{% extends 'register_base.html' %}
 {% load static %}
 
-
 <head>
-	<title>HafezAghili's Nuts</title>
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesPanel.css' %}" />
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesPanel.css' %}">
+    {% endblock %}
 
 </head>
+
+{% block content %}
+<br><br><br>
+
+<p style="text-align:center" class="title">Welcome to Admin Panel</p>
 
 <div class="features" id="features">
     <div class="container">
       <div class="box quality">
-        <div class="image"></div>
         <div class="text">
-          <h3>Test</h3>
+          <h3>Orders</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-            harum hic veniam eligendi minima
+            View and edit orders
           </p>
         </div>
         <a href="#">More</a>
       </div>
       <div class="box time">
-        <div class="image"></div>
         <div class="text">
-          <h3>Test</h3>
+          <h3>Products</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-            harum hic veniam eligendi minima
+            View and edit Products
           </p>
         </div>
         <a href="#">More</a>
       </div>
       <div class="box passion">
-        <div class="image"></div>
         <div class="text">
-          <h3>Test</h3>
+          <h3>Stock</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-            harum hic veniam eligendi minima
+            View and edit Stock
           </p>
         </div>
         <a href="#">More</a>
       </div>
     </div>
+</div>
 
-    <div class="features" id="features">
-        <div class="container">
-          <div class="box quality">
-            <div class="image"></div>
-            <div class="text">
-              <h3>Test</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-                harum hic veniam eligendi minima
-              </p>
-            </div>
-            <a href="#">More</a>
-          </div>
-          <div class="box time">
-            <div class="image"></div>
-            <div class="text">
-              <h3>Test</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-                harum hic veniam eligendi minima
-              </p>
-            </div>
-            <a href="#">More</a>
-          </div>
-          <div class="box passion">
-            <div class="image"></div>
-            <div class="text">
-              <h3>Test</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-                harum hic veniam eligendi minima
-              </p>
-            </div>
-            <a href="#">More</a>
-          </div>
+<div class="features" id="features">
+    <div class="container">
+      <div class="box qualitya">
+        <div class="text">
+          <h3>Suppliers</h3>
+          <p>
+            View and edit Suppliers
+          </p>
         </div>
+        <a href="#">More</a>
+      </div>
+      <div class="box timea">
+        <div class="text">
+          <h3>Categories</h3>
+          <p>
+            View and edit Categories
+          </p>
+        </div>
+        <a href="#">More</a>
+      </div>
+      <div class="box passiona">
+        <div class="text">
+          <h3>Inventories</h3>
+          <p>
+            View and edit Inventories
+          </p>
+        </div>
+        <a href="#">More</a>
+      </div>
+    </div>
+</div>
+
+<div class="features" id="features">
+    <div class="container">
+      <div class="box timeb">
+        <div class="text">
+          <h3>Cities</h3>
+          <p>
+            View and edit Cities
+          </p>
+        </div>
+        <a href="#">More</a>
+      </div>
+    </div>
+</div>
+{% endblock %}
 
