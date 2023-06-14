@@ -114,7 +114,61 @@ class CityUpdateView(UpdateView):
 class CityDeleteView(DeleteView):
     model = City
     template_name = 'panel/city/city_delete.html'
-    success_url = reverse_lazy('city_view')    
+    success_url = reverse_lazy('city_view')  
+
+
+# Inventory views
+class InventoryListView(ListView):
+    model = Inventory
+    template_name = 'panel/inventory/inventory_view.html'
+
+class InventoryDetailView(DetailView):
+    model = Inventory
+    template_name = 'panel/inventory/inventory_detail.html'
+
+class InventoryCreateView(CreateView):
+    model = Inventory
+    template_name = 'panel/inventory/inventory_create.html'
+    fields = '__all__'
+    success_url = reverse_lazy('inventory_view')
+
+class InventoryUpdateView(UpdateView): 
+    model = Inventory
+    template_name = 'panel/inventory/inventory_update.html'
+    fields =  '__all__'
+    success_url = reverse_lazy('inventory_view')
+
+class InventoryDeleteView(DeleteView):
+    model = Inventory
+    template_name = 'panel/inventory/inventory_delete.html'
+    success_url = reverse_lazy('inventory_view') 
+
+
+# InventoryProduct(stock) views
+class StockListView(ListView):
+    model = InventoryProduct
+    template_name = 'panel/stock/stock_view.html'
+
+class StockDetailView(DetailView):
+    model = InventoryProduct
+    template_name = 'panel/stock/stock_detail.html'
+
+class StockCreateView(CreateView):
+    model = InventoryProduct
+    template_name = 'panel/stock/stock_create.html'
+    fields = '__all__'
+    success_url = reverse_lazy('stock_view')
+
+class StockUpdateView(UpdateView): 
+    model = InventoryProduct
+    template_name = 'panel/stock/stock_update.html'
+    fields =  '__all__'
+    success_url = reverse_lazy('stock_view')
+
+class StockDeleteView(DeleteView):
+    model = InventoryProduct
+    template_name = 'panel/stock/stock_delete.html'
+    success_url = reverse_lazy('stock_view')   
 
 
 # Product views

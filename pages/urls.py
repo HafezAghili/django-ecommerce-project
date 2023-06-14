@@ -35,6 +35,20 @@ urlpatterns = [
     path('panel/city/<int:pk>/edit/', CityUpdateView.as_view(), name='city_update'), 
     path('panel/city/<int:pk>/delete/', CityDeleteView.as_view(), name='city_delete'),
 
+    ##inventory
+    path('panel/inventory/',InventoryListView.as_view(),name='inventory_view'),
+    path('panel/inventory/new/', InventoryCreateView.as_view(), name='inventory_create'),
+    path('panel/inventory/<int:pk>/', InventoryDetailView.as_view(), name='inventory_detail'),
+    path('panel/inventory/<int:pk>/edit/', InventoryUpdateView.as_view(), name='inventory_update'), 
+    path('panel/inventory/<int:pk>/delete/', InventoryDeleteView.as_view(), name='inventory_delete'),
+
+    ##inventoryproduct(stock)
+    path('panel/stock/',StockListView.as_view(),name='stock_view'),
+    path('panel/stock/new/', StockCreateView.as_view(), name='stock_create'),
+    path('panel/stock/<int:pk>/', StockDetailView.as_view(), name='stock_detail'),
+    path('panel/stock/<int:pk>/edit/', StockUpdateView.as_view(), name='stock_update'), 
+    path('panel/stock/<int:pk>/delete/', StockDeleteView.as_view(), name='stock_delete'),
+
     #product
     path('product/',ProductListView.as_view(),name='product_view'),
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
