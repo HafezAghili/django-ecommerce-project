@@ -19,7 +19,7 @@
     <div class="list-item">
         <div class="list-title">{{ supplier.name }}</div>
         <div class="list-buttons">
-            <button class="button-edit">Edit</button>
+            <a href="{% url 'supplier_update' supplier.pk %}"><button class="button-edit">Edit</button></a>
             <button class="button-delete">Delete</button>
         </div>
     </div>

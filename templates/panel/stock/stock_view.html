@@ -21,7 +21,7 @@
                 product : {{ inventoryproduct.name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 quantity : {{ inventoryproduct.quantity }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span class="list-buttons">
-                <button class="button-edit">Edit</button>
+                <a href="{% url 'stock_update' inventoryproduct.pk %}"><button class="button-edit">Edit</button></a>
                 <button class="button-delete">Delete</button>
             </span>
         </div>

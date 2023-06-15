@@ -1,0 +1,26 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesUpdateView.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+<br><br>
+<div class="update-view-container">
+  <h2 class="update-title">Update {{ object }}</h2>
+  <form method="post" class="update-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="update-buttons">
+      <button type="submit" class="update-btn update-btn-submit">Update</button>
+      <a class="update-btn update-btn-cancel" href="{% url 'inventory_view' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+<br><br>
+{% endblock %}
