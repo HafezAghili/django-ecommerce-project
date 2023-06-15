@@ -19,7 +19,7 @@
         <div class="list-title">{{ inventory.name }}</div>
         <div class="list-buttons">
             <a href="{% url 'inventory_update' inventory.pk %}"><button class="button-edit">Edit</button></a>
-            <button class="button-delete">Delete</button>
+            <a href="{% url 'inventory_delete' inventory.pk %}"><button class="button-delete">Delete</button></a>
         </div>
     </div>
     {% endfor %}

@@ -56,6 +56,10 @@
   .update-btn-submit {
     background-color: rgba(0, 123, 255, 0.8);
   }
+
+  .update-btn-delete {
+    background-color: rgba(215, 58, 58, 0.8);
+  }
   
   .update-btn-cancel {
     background-color: #6c757d;
@@ -64,6 +68,10 @@
   
   .update-btn-submit:hover {
     background-color: #007bff;
+  }
+
+  .update-btn-delete:hover {
+    background-color: #ee1a1a;
   }
 
   .update-btn-cancel:hover {
