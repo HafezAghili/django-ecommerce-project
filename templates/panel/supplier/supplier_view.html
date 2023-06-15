@@ -1,0 +1,29 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesListView2.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+<br><br>
+<p style="text-align:center" class="title">Suppliers - Admin Panel</p>
+<br>
+
+<div class="box-container">
+    {% for supplier in supplier_list %}
+    <div class="list-item">
+        <div class="list-title">{{ supplier.name }}</div>
+        <div class="list-buttons">
+            <button class="button-edit">Edit</button>
+            <button class="button-delete">Delete</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br><br>
+{% endblock %}

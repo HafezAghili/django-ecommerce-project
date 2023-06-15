@@ -1,0 +1,89 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesListView3.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+<br><br>
+<p style="text-align:center" class="title">Stock - Admin Panel</p>
+<br>
+    <p class="branch">Tehran branch<p>
+    {% for inventoryproduct in inventoryproduct_list %}
+        {% if inventoryproduct.inventory.name == 'Tehran branch' %}
+        <div class="list-item">
+            <div class="list-title">{{ inventoryproduct.inventory }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                product : {{ inventoryproduct.name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                quantity : {{ inventoryproduct.quantity }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="list-buttons">
+                <button class="button-edit">Edit</button>
+                <button class="button-delete">Delete</button>
+            </span>
+        </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+    <hr>
+
+    <p class="branch">Isfahan branch<p>
+        {% for inventoryproduct in inventoryproduct_list %}
+            {% if inventoryproduct.inventory.name == 'Isfahan branch' %}
+            <div class="list-item">
+                <div class="list-title">{{ inventoryproduct.inventory }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    product : {{ inventoryproduct.name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    quantity : {{ inventoryproduct.quantity }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="list-buttons">
+                    <button class="button-edit">Edit</button>
+                    <button class="button-delete">Delete</button>
+                </span>
+            </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    
+        <hr>
+
+        <p class="branch">Shiraz branch<p>
+            {% for inventoryproduct in inventoryproduct_list %}
+                {% if inventoryproduct.inventory.name == 'Shiraz branch' %}
+                <div class="list-item">
+                    <div class="list-title">{{ inventoryproduct.inventory }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        product : {{ inventoryproduct.name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        quantity : {{ inventoryproduct.quantity }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="list-buttons">
+                        <button class="button-edit">Edit</button>
+                        <button class="button-delete">Delete</button>
+                    </span>
+                </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        
+            <hr>
+
+            <p class="branch">Mashhad branch<p>
+                {% for inventoryproduct in inventoryproduct_list %}
+                    {% if inventoryproduct.inventory.name == 'Mashhad branch' %}
+                    <div class="list-item">
+                        <div class="list-title">{{ inventoryproduct.inventory }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            product : {{ inventoryproduct.name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            quantity : {{ inventoryproduct.quantity }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="list-buttons">
+                            <button class="button-edit">Edit</button>
+                            <button class="button-delete">Delete</button>
+                        </span>
+                    </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            
+                <hr>
+
+<br><br>
+{% endblock %}

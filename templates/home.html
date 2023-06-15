@@ -155,7 +155,13 @@
 
                 </div>
                 <br><br>
+
+                {% if user.is_authenticated %}
                 <div style="text-align:center;"><a href="{% url 'product_view' %}" class="btn">Shop Now</a></div>
+                {% else %}
+                <div style="text-align:center;"><a href="{% url 'login' %}" class="btn">Shop Now</a></div>
+                {% endif %}
+
             </section>
 
             <!-- branches -->

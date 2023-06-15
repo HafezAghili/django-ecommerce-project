@@ -1,0 +1,28 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesListView.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+<br><br><br><br>
+<p style="text-align:center" class="title">Cities - Admin Panel</p>
+<br><br>
+<div class="box-container">
+    {% for city in city_list %}
+    <div class="list-item">
+        <div class="list-title">{{ city.city }}</div>
+        <div class="list-buttons">
+            <button class="button-edit">Edit</button>
+            <button class="button-delete">Delete</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br><br><br>
+{% endblock %}

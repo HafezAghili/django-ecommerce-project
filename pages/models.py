@@ -53,10 +53,10 @@ class Supplier(models.Model):
 
 
 class Inventory(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50 , blank=True)
     city = models.ForeignKey('City' , on_delete=models.CASCADE)
-    address = models.CharField(max_length=50) 
-    phone = models.CharField(max_length=50) 
+    address = models.CharField(max_length=50 , blank=True) 
+    phone = models.CharField(max_length=50 , blank=True) 
 
     def __str__(self):
         return self.name
