@@ -31,10 +31,14 @@ class ProductListView(ListView):
     model = Product
     template_name = 'product_view.html'
 
+    #need help!
+    #def get_queryset(self):
+        #return InventoryProduct.objects.filter(inventory__city=self.request.user.city)
+
+
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_detail.html'
-
     
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
