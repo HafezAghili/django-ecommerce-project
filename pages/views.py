@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView , CreateView , ListView , UpdateView  , DetailView , DeleteView
 from .models import *
 from django.urls import reverse_lazy #for delete
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required
@@ -30,10 +30,6 @@ class PanelView(TemplateView):
 class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'product_view.html'
-
-    #need help!
-    #def get_queryset(self):
-     #   return InventoryProduct.objects.filter(inventory__city=self.request.user.city)
 
     def get_queryset(self):
         user_city = self.request.user.city
@@ -219,3 +215,24 @@ class ProductDeleteView(DeleteView):
     model = Product
     template_name = 'panel/product/product_delete.html'
     success_url = reverse_lazy('product_view_admin')
+
+
+
+@login_required(login_url='login')
+def userOrderSubmitView(request, pk):
+    if request.method == 'POST':
+        product = get_object_or_404(InventoryProduct, id=pk)
+        quantity = request.POST.get('quantity')
+        if product.quantity >= int(quantity):
+            product.quantity -= int(quantity)
+            product.save()
+            new_order = Order.objects.create(username=request.user, product=product, quantity=quantity)
+            return render(request, 'order_success.html')
+        else:
+            return render(request, 'order_error.html')
+    else:
+        product = get_object_or_404(InventoryProduct, id=pk)
+        context = {
+            'productInventory': product,
+        }
+        return render(request, 'userOrder.html', context)
