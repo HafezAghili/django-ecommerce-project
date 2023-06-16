@@ -27,13 +27,19 @@ class PanelView(TemplateView):
 
 #USER VIEWS-------------------
 # Product views
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'product_view.html'
 
     #need help!
     #def get_queryset(self):
-        #return InventoryProduct.objects.filter(inventory__city=self.request.user.city)
+     #   return InventoryProduct.objects.filter(inventory__city=self.request.user.city)
+
+    def get_queryset(self):
+        user_city = self.request.user.city
+        queryset = super().get_queryset()
+        queryset = queryset.filter(inventoryproduct__inventory__city=user_city)
+        return queryset
 
 
 class ProductDetailView(DetailView):
