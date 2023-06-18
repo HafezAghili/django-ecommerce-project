@@ -86,7 +86,10 @@ class CartItem(models.Model):
                                                                             ('Sent','Sent')])
 
     def __str__(self):
-        return f'{self.cart} {self.product}'
+         return f'{self.product.name} ({self.quantity}) - ${self.get_total_price()}'
+    
+    def get_total_price(self):
+        return self.quantity * self.product.price
     
 
 class Order(models.Model):

@@ -16,15 +16,16 @@
                         <td>{{ item.product.name }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>${{ item.product.price }}</td>
-                        <td>${{ total_price }}</td>
+                        <td>${{ item.get_total_price }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
         <p>Total: ${{ cart_total }}</p>
+        <a href="{% url 'product_view' %}">ادامه خرید</a>
         <form action="{% url 'checkout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Checkout</button>
+            <button type="submit">ثبت نهایی سفارش</button>
         </form>
     {% else %}
         <p>Your cart is empty.</p>

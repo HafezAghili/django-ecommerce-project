@@ -84,6 +84,54 @@ class ProductDetailView(DetailView):
         if form.is_valid():
             product = self.get_object()
             quantity = form.cleaned_data['quantity']
+            user = request.user  # نام کاربری فعلی
+            try:
+                cart = Cart.objects.get(user=user)
+            except Cart.DoesNotExist:
+                cart = Cart.objects.create(user=user)
+            try:
+                cart_item = CartItem.objects.get(cart=cart, product=product)
+                cart_item.quantity += quantity
+            except CartItem.DoesNotExist:
+                cart_item = CartItem(cart=cart, product=product, quantity=quantity)
+            cart_item.save()
+            cart_pk = cart.pk  # شناسه سبد خرید
+            cart_view_url = reverse('cart_view', kwargs={'pk': cart_pk})
+            return redirect(cart_view_url)
+        else:
+            context = self.get_context_data(**kwargs)
+            context['cart_form'] = form
+        return self.render_to_response(context)
+    """
+    def post(self, request, *args, **kwargs):
+        form = CartForm(request.POST)
+        if form.is_valid():
+            product = self.get_object()
+            quantity = form.cleaned_data['quantity']
+            user = request.user  # نام کاربری فعلی
+            try:
+                cart = Cart.objects.get(user=user)
+            except Cart.DoesNotExist:
+                cart = Cart.objects.create(user=user)
+            try:
+                cart_item = CartItem.objects.get(cart=cart, product=product)
+                cart_item.quantity += quantity
+            except CartItem.DoesNotExist:
+                cart_item = CartItem(cart=cart, product=product, quantity=quantity)
+            cart_item.save()
+            return redirect('cart_view', pk=cart.pk)  # انتقال به صفحه cart مربوط به کاربر فعلی
+        else:
+            context = self.get_context_data(**kwargs)
+            context['cart_form'] = form
+        return self.render_to_response(context)
+        """
+
+"""
+    def post(self, request, *args, **kwargs):
+        form = CartForm(request.POST)
+        if form.is_valid():
+            product = self.get_object()
+            quantity = form.cleaned_data['quantity']
             cart = request.user.cart
             try:
                 cart_item = CartItem.objects.get(cart=cart, product=product)
@@ -92,16 +140,41 @@ class ProductDetailView(DetailView):
                 cart, _ = Cart.objects.get_or_create(user=request.user)
                 cart_item = CartItem(cart=cart, product=product, quantity=quantity)
             cart_item.save()
-            return redirect('product_detail', pk=product.pk)
+            return redirect('cart_view')
         else:
             context = self.get_context_data(**kwargs)
             context['cart_form'] = form
             return self.render_to_response(context)
-        
+"""
+"""
 class CartDetailView(DetailView):
     model = Cart
     template_name = 'cart_view.html'
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart_items = CartItem.objects.filter(cart=self.object)
+        total_prices = cart_items.annotate(total_price=F('quantity') * F('product__price'))
+        cart_total = total_prices.aggregate(total=Sum('total_price'))['total']
+        context['cart_items'] = zip(cart_items, total_prices)
+        context['cart_total'] = cart_total
+        return context
+
+"""
+class CartDetailView(LoginRequiredMixin, DetailView):
+    model = Cart
+    template_name = 'cart_view.html'
+    context_object_name = 'cart'
+    
+    def get_object(self, queryset=None):
+        user = self.request.user
+        try:
+            cart = Cart.objects.get(user=user)
+        except Cart.DoesNotExist:
+            cart = Cart.objects.create(user=user)
+        return cart
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cart_items = CartItem.objects.filter(cart=self.object)

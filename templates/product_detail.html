@@ -24,7 +24,7 @@
                 <br>
                 <!-- add to cart -->
                 <div class="content">
-                    <form method="post" action="{% url 'product_detail' pk=object.pk %}">
+                    <form action="{% url 'product_detail' pk=object.pk %}" method="post">
                         {% csrf_token %}
                         {{ cart_form.as_p }}
                         <button type="submit">Add to cart</button>
