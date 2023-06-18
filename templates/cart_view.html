@@ -1,5 +1,16 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Sign up</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesCardView.css' %}">
+    {% endblock %}
+</head>
+
 {% block content %}
-    <h1>Cart</h1>
+<br><br>
+    <h1>&nbsp;&nbsp;&nbsp;Cart</h1>
     {% if cart_items %}
         <table>
             <thead>
@@ -21,12 +32,16 @@
                 {% endfor %}
             </tbody>
         </table>
-        <p>Total: ${{ cart_total }}</p>
-        <a href="{% url 'product_view' %}">ادامه خرید</a>
-        <form action="{% url 'checkout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">ثبت نهایی سفارش</button>
-        </form>
+        <hr>
+        <br>
+        <p style="text-align:Right;padding-inline: 100px;">Total: ${{ cart_total }}</p>
+        <div class="button-container">
+            <a href="{% url 'product_view' %}" class="btn-primary btn-animation">Continue shopping</a>
+            <form action="{% url 'checkout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Order</button>
+            </form>
+        </div>
     {% else %}
         <p>Your cart is empty.</p>
     {% endif %}

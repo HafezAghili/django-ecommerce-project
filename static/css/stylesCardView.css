@@ -1,0 +1,101 @@
+/* استایل جدول */
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* استایل کارت */
+  .card {
+    margin: 0 auto;
+    margin-top: 2rem;
+    max-width: 30rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-out 1;
+    padding: 1.5rem;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* استایل دکمه‌ها */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  
+  .button-container button {
+    padding: 8px 16px;
+  }
+  
+  /* استایل عناصر وسط چین */
+  .centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* استایل پیام خالی */
+  .empty-cart-message {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+
+
+/* استایل دکمه‌ها */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .button-container a,
+  .button-container button {
+    padding: 8px 16px;
+    animation: fadeIn 0.5s ease-out 1;
+  }
+
+  
+/* استایل دکمه ثبت نهایی سفارش */
+.button-container button[type="submit"] {
+    margin-left: 1rem;
+  }
+
+  .btn{
+    padding: 10px 40px;
+    border-radius: 0.3rem;
+    background: #3ece86;
+    color: #011209;
+    font-weight: 500;
+    transition: background .4s ease;
+}
+
+  .btn:hover{
+    background: #0bae5c;
+}
