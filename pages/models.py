@@ -72,11 +72,10 @@ class InventoryProduct(models.Model):
      
 
 class Cart(models.Model):
-    user = models.ForeignKey('accounts.CustomUser' , on_delete=models.CASCADE)
+    user = models.ForeignKey('accounts.CustomUser', related_name='carts', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user
-
+        return str(self.user)
 
 class CartItem(models.Model):
     cart = models.ForeignKey('Cart' , on_delete=models.CASCADE)

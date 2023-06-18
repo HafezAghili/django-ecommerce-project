@@ -52,4 +52,9 @@ urlpatterns = [
     #product
     path('product/',ProductListView.as_view(),name='product_view'),
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
+
+    #cart
+    path('cart/<int:pk>/', CartDetailView.as_view(), name='cart_view'),
+    path('checkout/', checkout_view, name='checkout'),
+
 ]

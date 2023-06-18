@@ -1,35 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<br><br><br>
+    <br><br><br>
 
-<div class="post-entry"> 
-    <div class="products-container">
-        <div class="box">
-            <img src="{{ product.img.url }}" alt={{ product.name }}>
-            <h3>{{ product.name }}</h3>
-
-            <div class="content">
-                <span style="text-align:right;"><a href="#">Add to cart</a></span>
-            </div>
-
-            <br>
-
-            <div class="content">
-                <span>Price : ${{ product.price }}</span>
-                <span>Category : {{ product.category }}</span> 
-                <span>Quality : {{ product.quality }}</span> 
-                <span>
-                    <ul>
-                    {% for supplier in supplier_list %}
-                      <li>Supplier : {{ supplier.name }}</li>
-                    {% endfor %}
-                    </ul>
-                </span> 
-                <span>Expiration at : {{ product.expiration_at }}</span>
+    <div class="post-entry"> 
+        <div class="products-container">
+            <div class="box">
+                <img src="{{ object.img.url }}" alt="{{ object.name }}">
+                <h3>{{ object.name }}</h3>
+                <br>
+                <div class="content">
+                    <span>Price: ${{ object.price }}</span>
+                    <span>Category: {{ object.category }}</span> 
+                    <span>Quality: {{ object.quality }}</span> 
+                    <span>
+                        <ul>
+                            {% for supplier in supplier_list %}
+                                <li>Supplier: {{ supplier.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </span> 
+                    <span>Expiration at: {{ object.expiration_at }}</span>
+                </div>
+                <br>
+                <!-- add to cart -->
+                <div class="content">
+                    <form method="post" action="{% url 'product_detail' pk=object.pk %}">
+                        {% csrf_token %}
+                        {{ cart_form.as_p }}
+                        <button type="submit">Add to cart</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
 {% endblock content %}
+

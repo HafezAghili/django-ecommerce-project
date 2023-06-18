@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Checkout</h1>
+  <p>Total: ${{ cart_total }}</p>
+
+  <form method="POST" action="{% url 'checkout' %}">
+    {% csrf_token %}
+    <!-- فیلدهای دیگر مورد نیاز برای اطلاعات پرداخت -->
+    <button type="submit">Submit Order</button>
+  </form>
+{% endblock %}
