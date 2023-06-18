@@ -43,7 +43,7 @@
                     {% if user.is_superuser %}
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}    
-                        <li><a href="#">Cart</a></li>
+                        <li><a href="{% url 'cart_view' pk=0 %}">Cart</a></li>
                         <li><a href="#">Order</a></li>
                         <li><hr ></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
