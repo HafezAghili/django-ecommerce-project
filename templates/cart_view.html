@@ -2,7 +2,7 @@
 {% load static %}
 
 <head>
-    <title>Sign up</title>
+    <title>Cart</title>
     {% block styles %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/stylesCardView.css' %}">
     {% endblock %}
@@ -37,10 +37,10 @@
         <p style="text-align:Right;padding-inline: 100px;">Total: ${{ cart_total }}</p>
         <div class="button-container">
             <a href="{% url 'product_view' %}" class="btn-primary btn-animation">Continue shopping</a>
-            <form action="{% url 'checkout' %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="btn">Order</button>
-            </form>
+
+            <a href="{% url 'checkout' %}">
+              <button type="submit" class="btn">Order tracking</button>
+            </a>
         </div>
     {% else %}
         <p>Your cart is empty.</p>

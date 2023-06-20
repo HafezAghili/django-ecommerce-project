@@ -1,12 +1,44 @@
-{% extends 'base.html' %}
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Checkout</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesCardView.css' %}">
+    {% endblock %}
+</head>
 
 {% block content %}
-  <h1>Checkout</h1>
-  <p>Total: ${{ cart_total }}</p>
-
-  <form method="POST" action="{% url 'checkout' %}">
-    {% csrf_token %}
-    <!-- فیلدهای دیگر مورد نیاز برای اطلاعات پرداخت -->
-    <button type="submit">Submit Order</button>
-  </form>
+    <br><br><br>
+    <h1>&nbsp;&nbsp;&nbsp;Checkout</h1>
+    {% if cart_items %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.get_total_price }}</td>
+                        <td>{{ item.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <br>
+        <div class="button-container">
+            <a href="{% url 'product_view' %}" class="btn-primary btn-animation">Continue shopping</a>
+        </div>
+    {% else %}
+        <p>No products to checkout.</p>
+    {% endif %}
+    <br><br><br><br><br>
 {% endblock %}

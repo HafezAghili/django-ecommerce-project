@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 from .forms import CartForm
 from django.contrib import messages
 from django.db.models import F , Sum
+from django.views.generic import View
 
 # Create your views here.
 
@@ -39,34 +40,6 @@ class ProductListView(LoginRequiredMixin, ListView):
         queryset = super().get_queryset()
         queryset = queryset.filter(inventoryproduct__inventory__city=user_city)
         return queryset
-
-"""
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'product_detail.html'
-    
-    def get_context_data(self, **kwargs):
-        context = super(ProductDetailView, self).get_context_data(**kwargs)
-        context['supplier_list'] = self.object.supplier.all()
-        context['cart_form'] = CartForm()
-        return context
-    
-    #add to cart
-    
-    def post(self, request, *args, **kwargs):
-        form = CartForm(request.POST)
-        if form.is_valid():
-            product = self.get_object()
-            quantity = form.cleaned_data['quantity']
-            cart_item, _ = CartItem.objects.get_or_create(cart=request.user.cart, product=product)
-            cart_item.quantity += quantity
-            cart_item.save()
-            return redirect('product_detail', pk=product.pk)
-        else:
-            context = self.get_context_data(**kwargs)
-            context['cart_form'] = form
-            return self.render_to_response(context)
-"""
 
 
 class ProductDetailView(DetailView):
@@ -102,65 +75,8 @@ class ProductDetailView(DetailView):
             context = self.get_context_data(**kwargs)
             context['cart_form'] = form
         return self.render_to_response(context)
-    """
-    def post(self, request, *args, **kwargs):
-        form = CartForm(request.POST)
-        if form.is_valid():
-            product = self.get_object()
-            quantity = form.cleaned_data['quantity']
-            user = request.user  # نام کاربری فعلی
-            try:
-                cart = Cart.objects.get(user=user)
-            except Cart.DoesNotExist:
-                cart = Cart.objects.create(user=user)
-            try:
-                cart_item = CartItem.objects.get(cart=cart, product=product)
-                cart_item.quantity += quantity
-            except CartItem.DoesNotExist:
-                cart_item = CartItem(cart=cart, product=product, quantity=quantity)
-            cart_item.save()
-            return redirect('cart_view', pk=cart.pk)  # انتقال به صفحه cart مربوط به کاربر فعلی
-        else:
-            context = self.get_context_data(**kwargs)
-            context['cart_form'] = form
-        return self.render_to_response(context)
-        """
 
-"""
-    def post(self, request, *args, **kwargs):
-        form = CartForm(request.POST)
-        if form.is_valid():
-            product = self.get_object()
-            quantity = form.cleaned_data['quantity']
-            cart = request.user.cart
-            try:
-                cart_item = CartItem.objects.get(cart=cart, product=product)
-                cart_item.quantity += quantity
-            except CartItem.DoesNotExist:
-                cart, _ = Cart.objects.get_or_create(user=request.user)
-                cart_item = CartItem(cart=cart, product=product, quantity=quantity)
-            cart_item.save()
-            return redirect('cart_view')
-        else:
-            context = self.get_context_data(**kwargs)
-            context['cart_form'] = form
-            return self.render_to_response(context)
-"""
-"""
-class CartDetailView(DetailView):
-    model = Cart
-    template_name = 'cart_view.html'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        cart_items = CartItem.objects.filter(cart=self.object)
-        total_prices = cart_items.annotate(total_price=F('quantity') * F('product__price'))
-        cart_total = total_prices.aggregate(total=Sum('total_price'))['total']
-        context['cart_items'] = zip(cart_items, total_prices)
-        context['cart_total'] = cart_total
-        return context
 
-"""
 class CartDetailView(LoginRequiredMixin, DetailView):
     model = Cart
     template_name = 'cart_view.html'
@@ -184,30 +100,25 @@ class CartDetailView(LoginRequiredMixin, DetailView):
         context['cart_total'] = cart_total
         return context
     
-
-def checkout_view(request):
-    # منطق پردازش سفارش را اینجا بنویسید
-    # ...
-    
-    return render(request, 'checkout.html')
-
-
-"""  
-    def post(self, request, *args, **kwargs):
-        form = CartForm(request.POST)
-        if form.is_valid():
-            product = self.get_object()
-            quantity = form.cleaned_data['quantity']
-            cart_item, _ = CartItem.objects.get_or_create(cart=request.user.cart, product=product)
-            cart_item.quantity += quantity
-            cart_item.save()
-            return redirect('cart_view')
+class CheckoutView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        cart = Cart.objects.get(user=user)
+        cart_items = CartItem.objects.filter(cart=cart)
+        cart_items_with_status = cart_items
+        
+        print(cart_items_with_status)  # نمایش محتویات
+        
+        if cart_items_with_status:
+            context = {
+                'cart_items': cart_items_with_status,
+            }
+            return render(request, 'checkout.html', context)
         else:
-            context = self.get_context_data(**kwargs)
-            context['cart_form'] = form
-            return self.render_to_response(context)
+            return render(request, 'checkout.html', {'message': 'No products to checkout.'})
 
-"""
+
+
 #ADMIN VIEWS-------------------
 # Category views
 class CategoryListView(ListView):
@@ -375,26 +286,3 @@ class ProductDeleteView(DeleteView):
     model = Product
     template_name = 'panel/product/product_delete.html'
     success_url = reverse_lazy('product_view_admin')
-
-"""
-#add to cart
-
-@login_required(login_url='login')
-def userOrderSubmitView(request, pk):
-    if request.method == 'POST':
-        product = get_object_or_404(InventoryProduct, id=pk)
-        quantity = request.POST.get('quantity')
-        if product.quantity >= int(quantity):
-            product.quantity -= int(quantity)
-            product.save()
-            new_order = Order.objects.create(username=request.user, product=product, quantity=quantity)
-            return render(request, 'order_success.html')
-        else:
-            return render(request, 'order_error.html')
-    else:
-        product = get_object_or_404(InventoryProduct, id=pk)
-        context = {
-            'productInventory': product,
-        }
-        return render(request, 'userOrder.html', context)
-"""

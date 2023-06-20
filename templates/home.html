@@ -33,13 +33,13 @@
         <ul class="navbar">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#products">Products</a></li>
+            <li><a href="{% url 'product_view' %}">Products</a></li>
             <li><a href="#branches">Branches</a></li>
         </ul>
 
         <!-- icons -->
         <div class="header-icon">
-            <i class='bx bx-cart-alt'></i>
+            <a href="{% url 'cart_view' pk=0 %}"><i class='bx bx-cart-alt'></i></a>
             <i class='bx bx-search' id="search-icon"></i>
 
             <span class="dropdown"> 
@@ -52,7 +52,7 @@
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}    
                         <li><a href="{% url 'cart_view' pk=0 %}">Cart</a></li>
-                        <li><a href="#">Order</a></li>
+                        <li><a href="{% url 'checkout' %}">Order</a></li>
                         <li><hr ></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% endif %}
@@ -233,7 +233,7 @@
             <section class="footer">
                 <div class="footer-box">
                     <h2>HafezAghili's Nut</h2>
-                    <p>text</p>
+                    <p>Made by A.H.HafezAghili</p>
                     <div class="social">
                         <a href="{% url 'comingsoon' %}"><i class='bx bxl-facebook' ></i></a>
                         <a href="{% url 'comingsoon' %}"><i class='bx bxl-twitter' ></i></a>
@@ -244,7 +244,7 @@
 
                 <div class="footer-box">
                     <h3>Support</h3>
-                    <li><a href="{% url 'comingsoon' %}">Products</a></li>
+                    <li><a href="{% url 'product_view' %}">Products</a></li>
                     <li><a href="{% url 'comingsoon' %}">Help & Support</a></li>
                     <li><a href="{% url 'comingsoon' %}">Privacy Policy</a></li>
                     <li><a href="{% url 'comingsoon' %}">Terms Of Use</a></li>

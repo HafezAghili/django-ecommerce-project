@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<br><br><br>
+<br>
 
 <!-- products -->
 <section class="products" id="products">
     <div class="heading">
-        <h2>Our new products</h2>
+        <h2>Our products</h2>
     </div>
+    <br>
+    <hr>
 
     <!-- container -->
+
     {% for product in product_list %}
     {% if forloop.counter0|divisibleby:3 %}
         <div class="post-entry">
@@ -20,7 +23,7 @@
                     <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h3>
                     <div class="content">
                         <span>${{ product.price }}</span>
-                        <a href="#">Add to cart</a>
+                        <a href="{% url 'product_detail' product.pk %}">Add to cart</a>
                     </div>
                 </div>
     {% if forloop.counter|divisibleby:3 or forloop.last %}
@@ -28,6 +31,7 @@
         </div>
     {% endif %}
 {% endfor %}
+
 </section>
 
 <!--

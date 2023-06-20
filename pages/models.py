@@ -86,12 +86,13 @@ class CartItem(models.Model):
                                                                             ('Sent','Sent')])
 
     def __str__(self):
-         return f'{self.product.name} ({self.quantity}) - ${self.get_total_price()}'
+         return f'{self.cart.user} -> {self.product.name} ({self.quantity}) - ${self.get_total_price()}'
     
     def get_total_price(self):
         return self.quantity * self.product.price
     
 
+"""
 class Order(models.Model):
     user = models.ForeignKey('accounts.CustomUser' , on_delete=models.CASCADE)
 
@@ -109,3 +110,4 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f'{self.order} {self.product}'
+"""
