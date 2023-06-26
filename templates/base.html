@@ -41,10 +41,13 @@
                 {% if user.is_authenticated %}
                     {% if user.is_superuser %}
                         <li><a href="{% url 'logout' %}">Logout</a></li>
-                    {% else %}    
+                        {% else %}
+                        <li><a href="#">Welcome {{user.username}}</a></li>
+                        <li><hr></li>   
                         <li><a href="{% url 'cart_view' pk=0 %}">Cart</a></li>
                         <li><a href="{% url 'checkout' %}">Order</a></li>
-                        <li><hr ></li>
+                        <li><hr></li>
+                        <li><a href="{% url 'password_change' %}">Password</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% endif %}
 
