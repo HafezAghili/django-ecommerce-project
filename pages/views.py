@@ -40,8 +40,69 @@ class ProductListView(LoginRequiredMixin, ListView):
         queryset = super().get_queryset()
         queryset = queryset.filter(inventoryproduct__inventory__city=user_city)
         return queryset
+    
+    
 
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['supplier_list'] = self.object.supplier.all()
+        context['cart_form'] = CartForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = CartForm(request.POST)
+        if form.is_valid():
+            product_id = self.kwargs['pk']
+            quantity = form.cleaned_data['quantity']
+            user = request.user
+            try:
+                inventory_product = InventoryProduct.objects.get(name_id=product_id, inventory__city=user.city)
+                if inventory_product.quantity >= quantity:
+                    inventory_product.quantity -= quantity
+                    inventory_product.save()
+
+                    try:
+                        cart = Cart.objects.get(user=user)
+                    except Cart.DoesNotExist:
+                        cart = Cart.objects.create(user=user)
+
+                    try:
+                        cart_item = CartItem.objects.get(cart=cart, product_id=product_id)
+                        cart_item.quantity += quantity
+                    except CartItem.DoesNotExist:
+                        cart_item = CartItem(cart=cart, product_id=product_id, quantity=quantity)
+
+                    cart_item.save()
+                    cart_pk = cart.pk
+                    cart_view_url = reverse('cart_view', kwargs={'pk': cart_pk})
+                    return redirect(cart_view_url)
+                else:
+                    max_quantity = inventory_product.quantity  # مقدار حداکثر موجودی قابل سفارش
+                    insufficient_quantity_url = reverse('insufficient_quantity', kwargs={'max_quantity': max_quantity})
+                    return redirect(insufficient_quantity_url)
+                    """
+                    max_quantity = inventory_product.quantity
+                    messages.warning(request, f"Maximum available quantity is {max_quantity}")
+                    """
+            except InventoryProduct.DoesNotExist:
+                form.add_error(None, 'Product not available in your city')
+        context = self.get_context_data(**kwargs)
+        context['cart_form'] = form
+        return self.render_to_response(context)
+    
+    
+class InsufficientQuantityView(View):
+    def get(self, request, max_quantity, *args, **kwargs):
+        context = {
+            'max_quantity': max_quantity,
+        }
+        return render(request, 'insufficient_quantity.html', context)
+
+"""
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_detail.html'
@@ -75,7 +136,7 @@ class ProductDetailView(DetailView):
             context = self.get_context_data(**kwargs)
             context['cart_form'] = form
         return self.render_to_response(context)
-
+"""
 
 class CartDetailView(LoginRequiredMixin, DetailView):
     model = Cart
@@ -99,7 +160,7 @@ class CartDetailView(LoginRequiredMixin, DetailView):
         context['cart_items'] = zip(cart_items, total_prices)
         context['cart_total'] = cart_total
         return context
-    
+
 class CheckoutView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         user = request.user

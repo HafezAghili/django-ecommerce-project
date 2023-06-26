@@ -1,0 +1,37 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Insufficient Quantity</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesLogin.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+    <div class="container-fluid">
+        <br><br>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header">Insufficient Quantity</div>
+                    <div class="card-body">
+                        <p>Your requested quantity exceeds the available inventory.<br>
+                        Please choose a lower quantity or contact our support team for assistance.</p>
+                        <p>The maximum available quantity is <b style="color:red">{{ max_quantity }}</b>.</p><br>
+                        <button onclick="goBack()" class="btn btn-primary">Back to Product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+{% endblock %}
