@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+.hero{
+    /* position: relative; */
+    width: 100%;
+    /* height: 100vh; */
+    background: #eff4f4;
+}
+
+.page{
+    margin-left: 10%;
+    margin-top: 15%;
+}
+
+.page h1{
+    font-size: 50px;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+.page{
+    color: #555;
+    line-height: 22px;
+}
+
+.images{
+    width: 45%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+}
+
+.images img{
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: bottom 1s, left 1s;
+}
+
+.images:hover .shape{
+    bottom: 40px;
+}
+
+.images:hover .profile{
+    left: 45%;
+}
+
+
+#element {
+    width: 600px;
+    height: 150px;
+    text-align: justify;
+  }

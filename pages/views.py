@@ -30,6 +30,9 @@ class PanelView(TemplateView):
     
 class AboutView(TemplateView):
     template_name = 'about.html'
+    
+class HafezView(TemplateView):
+    template_name = 'hafez.html'
 
 
 #USER VIEWS-------------------

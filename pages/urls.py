@@ -6,6 +6,7 @@ urlpatterns = [
     path('comingsoon/',ComingSoonView.as_view(),name='comingsoon'),
     path('panel/',PanelView.as_view(),name='panel'),
     path('about_us/',AboutView.as_view(),name='about'),
+    path('about_me/',HafezView.as_view(),name='hafez'),
     
     #panel
     ##product
