@@ -27,6 +27,9 @@ class ComingSoonView(TemplateView):
 
 class PanelView(TemplateView):
     template_name = 'panel/panel.html'
+    
+class AboutView(TemplateView):
+    template_name = 'about.html'
 
 
 #USER VIEWS-------------------

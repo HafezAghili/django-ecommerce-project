@@ -1,0 +1,40 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Log in</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesLogin.css' %}">
+    <style>
+        .about-text {
+            text-align: justify;
+        }
+    </style>
+    {% endblock %}
+</head>
+
+{% block content %}
+<br>
+
+<section class="about" id="about">
+    <div class="about-img">
+        <img src="{% static 'images/aboutItem.png'%}" alt="aboutItem">
+    </div>
+
+    <div class="about-text">
+        <h2>Our History</h2>
+        <p>This nut shop is considered one of the best nut exporters in the world, which is always noted for the quality of its products</p>
+        <p>Hafez Aghili's nut shop was established in 2023 by Amir Hossein Hafez Aghili.</p>
+        <p>He is a computer engineer, so he has put a lot of emphasis on online sales.</p>
+        <p>The nut shop has been in business for over a year and has grown to become one of the most well-known and trusted nut exporters on the global market, thanks to the dedication and innovation of its founder.</p>
+        <p>Hafez Aghili's nut shop offers a wide variety of high-quality nuts, including almonds, pistachios, walnuts, cashews, and more. 
+            <br>With a strong focus on quality control and customer satisfaction, the shop ensures that only the finest nuts make their way to customers worldwide.</p>
+
+        <p>Amir Hossein Hafez Aghili, the founder of the nut shop, leverages his expertise as a computer engineer to drive online sales and create a seamless shopping experience for customers. <br>Through an intuitive website and efficient delivery systems, customers can easily browse and order their favorite nuts from the comfort of their homes.</p>
+
+        <p>Since its establishment in 2023, the nut shop has rapidly gained recognition and trust in the global market. The combination of premium quality products, efficient operations, and a commitment to customer service has contributed to its success. Hafez Aghili's nut shop continues to innovate and expand its reach, ensuring that nut lovers worldwide can enjoy the finest nuts with just a few clicks.
+        </p>
+    </div>
+</section>
+
+{% endblock content %}

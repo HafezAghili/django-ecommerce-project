@@ -5,6 +5,7 @@ urlpatterns = [
     path('',HomeView.as_view(),name='home'),
     path('comingsoon/',ComingSoonView.as_view(),name='comingsoon'),
     path('panel/',PanelView.as_view(),name='panel'),
+    path('about_us/',AboutView.as_view(),name='about'),
     
     #panel
     ##product
