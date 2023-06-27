@@ -58,7 +58,12 @@ urlpatterns = [
     #cart
     path('cart/<int:pk>/', CartDetailView.as_view(), name='cart_view'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
-    
     path('insufficient_quantity/<int:max_quantity>/', InsufficientQuantityView.as_view(), name='insufficient_quantity'),
+    
+    ##cart item(order)
+    path('panel/order/',OrderListView.as_view(),name='order_view'),
+    path('panel/order/<int:pk>/', OrderDetailView.as_view(), name='order_detail'),
+    path('panel/order/<int:pk>/edit/', OrderUpdateView.as_view(), name='order_update'), 
+    path('panel/order/<int:pk>/delete/', OrderDeleteView.as_view(), name='order_delete'),
 
 ]

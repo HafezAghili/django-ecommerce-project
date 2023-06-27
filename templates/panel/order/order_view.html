@@ -1,0 +1,91 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesListView3.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+<br><br>
+<p style="text-align:center" class="title">Order - Admin Panel</p>
+<br><br>
+
+<p style="text-align:center;"><span class="access"> <b>Quick Access Menu : </b><a href="#Submitted">Submitted</a> | <a href="#Ready to Send">Ready to Send</a> | <a href="#Sent">Sent</a></span> </p>
+
+
+<p class="branch" id="Submitted">status =&gt; Submitted<p>
+
+    {% for cartitem in cartitem %}
+    {% if cartitem.status == "Submitted" %}
+        <div class="list-item">
+            <div class="list-title">
+                user : <span style="color:red"> {{ cartitem.cart }} </span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+                product : <span style="color:blue"> {{ cartitem.product }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                quantity : <span style="color:blue"> {{ cartitem.quantity }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                status : <span style="color:IndianRed"> {{ cartitem.status }} </span>
+
+                <div class="list-buttons" style="text-align:right;">
+                    <a href="{% url 'order_update' cartitem.pk %}"><button class="button-edit">Edit</button></a>
+                    <a href="{% url 'order_delete' cartitem.pk %}"><button class="button-delete">Delete</button></a>
+                </div>
+        </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+    <hr>
+
+    <p class="branch" id="Ready to Send">status =&gt; Ready to Send<p>
+
+        {% for cartitem in cartitem %}
+        {% if cartitem.status == 'Ready to send' %}
+        <div class="list-item">
+            <div class="list-title">
+                user : <span style="color:red"> {{ cartitem.cart }} </span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+                product : <span style="color:blue"> {{ cartitem.product }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                quantity : <span style="color:blue"> {{ cartitem.quantity }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                status : <span style="color:Goldenrod"> {{ cartitem.status }} </span>
+
+                <div class="list-buttons" style="text-align:right;">
+                    <a href="{% url 'order_update' cartitem.pk %}"><button class="button-edit">Edit</button></a>
+                    <a href="{% url 'order_delete' cartitem.pk %}"><button class="button-delete">Delete</button></a>
+                </div>
+        </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+    
+        <hr>
+
+
+<p class="branch" id="Sent">status =&gt; Sent<p>
+
+    {% for cartitem in cartitem %}
+    {% if cartitem.status == "Sent" %}
+    <div class="list-item">
+        <div class="list-title">
+            user : <span style="color:red"> {{ cartitem.cart }} </span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+            product : <span style="color:blue"> {{ cartitem.product }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+            quantity : <span style="color:blue"> {{ cartitem.quantity }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+            status : <span style="color:MediumSeaGreen"> {{ cartitem.status }} </span>
+
+            <div class="list-buttons" style="text-align:right;">
+                <a href="{% url 'order_update' cartitem.pk %}"><button class="button-edit">Edit</button></a>
+                <a href="{% url 'order_delete' cartitem.pk %}"><button class="button-delete">Delete</button></a>
+            </div>
+    </div>
+    </div>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+
+
+<br><br>
+{% endblock %}

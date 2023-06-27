@@ -1,3 +1,4 @@
+from typing import Any
 from django.views.generic import TemplateView , CreateView , ListView , UpdateView  , DetailView , DeleteView
 from .models import *
 from django.urls import reverse_lazy #for delete
@@ -353,3 +354,26 @@ class ProductDeleteView(DeleteView):
     model = Product
     template_name = 'panel/product/product_delete.html'
     success_url = reverse_lazy('product_view_admin')
+    
+    
+
+# Order views (cart items)
+class OrderListView(ListView):
+    model = CartItem
+    template_name = 'panel/order/order_view.html'
+    context_object_name = 'cartitem'
+
+class OrderDetailView(DetailView):
+    model = CartItem
+    template_name = 'panel/order/order_detail.html'
+
+class OrderUpdateView(UpdateView): 
+    model = CartItem
+    template_name = 'panel/order/order_update.html'
+    fields =  '__all__'
+    success_url = reverse_lazy('order_view')
+
+class OrderDeleteView(DeleteView):
+    model = CartItem
+    template_name = 'panel/order/order_delete.html'
+    success_url = reverse_lazy('order_view') 

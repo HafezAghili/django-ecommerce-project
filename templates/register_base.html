@@ -23,15 +23,31 @@
         <i class='bx bx-menu' id="menu-icon"></i>
 
         <ul class="navbar">
+
+            {% if user.is_superuser %}
+            <li><a href="{% url 'home' %}">Admin Panel</a></li>
+            {% else %}
             <li><a href="{% url 'home' %}">Home</a></li>
+            {% endif %}
+
             <li><a href="{% url 'about' %}">About Us</a></li>
+
+            {% if user.is_superuser %}
+            {% else %}
             <li><a href="{% url 'product_view' %}">Products</a></li>
+            {% endif %}
+
             <li><a href="{% url 'hafez' %}">About Me</a></li>
         </ul>
 
         <!-- icons -->
         <div class="header-icon">
+
+            {% if user.is_superuser %}
+            {% else %}
             <a href="{% url 'cart_view' pk=0 %}"><i class='bx bx-cart-alt'></i></a>
+            {% endif %}
+
             <i class='bx bx-search' id="search-icon"></i>
 
             <span class="dropdown"> 
@@ -93,7 +109,13 @@
 
         <div class="footer-box">
             <h3>Support</h3>
+
+            {% if user.is_superuser %}
+            <li><a href="{% url 'product_view_admin' %}">Products</a></li>
+            {% else %}
             <li><a href="{% url 'product_view' %}">Products</a></li>
+            {% endif %}
+
             <li><a href="{% url 'comingsoon' %}">Help & Support</a></li>
             <li><a href="{% url 'comingsoon' %}">Privacy Policy</a></li>
             <li><a href="{% url 'comingsoon' %}">Terms Of Use</a></li>
