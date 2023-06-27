@@ -49,7 +49,7 @@
     justify-content: right;
   }
   
-  .button-edit, .button-delete {
+  .button-edit, .button-delete ,.button-new {
     margin: 5px 4px;
     padding: 8px 16px;
     border-radius: 4px;
@@ -74,6 +74,14 @@
 
   .button-delete:hover {
     background-color: #b80a0a;
+  }
+
+  .button-new {
+    background-color: #998a89;
+  }
+  
+  .button-new:hover {
+    background-color: #868788;
   }
   
   .box-container:before,

@@ -1,18 +1,23 @@
+{% extends 'register_base.html' %}
 {% load static %}
 
-<html>
-    <head>
-        <title>HafezAghili</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/stylesHafez.css' %}" />
-    </head>
+<head>
+    <title>HafezAghili</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesHafez.css' %}" />
+    {% endblock %}
+
+</head>
+
+{% block content %}
 
     <body bgcolor="#eff4f4">
         <div class="hero">
             <div class="page">
-                <h1>I,m Amirhossein <span> Hafezaghili </span></h1>
-                <p id="element"></p>
+                <h1>I'm Hafezaghili</h1>
+                <p>I'm <span id="element" style="color:blue"></span></p>
                 <br>
-                <button onclick="goBack()" class="btn btn-primary">Back to Product</button>
+                <button onclick="goBack()" class="btn btn-primary">Back to Previous Page</button>
             </div>
 
             <div class="images">
@@ -28,11 +33,11 @@
   <!-- Setup and start animation! -->
   <script>
     var typed = new Typed('#element', {
-      strings: ['I am a computer engineer with a strong passion for artificial intelligence, data analysis, and machine learning. These fields have always fascinated me due to their ability to unlock the potential of data and create intelligent systems that can learn and make decisions. As a computer engineer, I have acquired a solid foundation in programming, algorithms, and software development, which provides me with the necessary skills to explore the realms of AI and data analytics.'
-                , 'In the realm of artificial intelligence, I am intrigued by the concept of creating machines and systems that can mimic human intelligence and perform tasks that traditionally require human cognitive abilities. From natural language processing to computer vision and robotics, the possibilities of AI are vast, and I am eager to contribute to this evolving field.'
-                , 'Data analysis and machine learning, on the other hand, allow me to extract valuable insights from vast amounts of data and build predictive models. I am fascinated by the process of discovering patterns, trends, and correlations within data, and using that knowledge to make informed decisions and predictions. The ability to uncover hidden patterns and derive meaningful information from data opens up opportunities for innovation and optimization in various industries.'
-                , 'With a strong background in computer engineering and a deep interest in artificial intelligence, data analysis, and machine learning, I am motivated to further explore these fields, contribute to advancements, and apply their principles to real-world challenges. I believe that combining my technical skills with the power of AI and data analytics can lead to groundbreaking solutions and drive positive change in our increasingly data-driven world.'],
-      typeSpeed: 50,
+      strings: ['Data Scientist'
+                , 'Programmer'
+                , 'Power BI Developer'
+                , 'Web Developer'],
+      typeSpeed: 100,
     });
   </script>
 
@@ -41,5 +46,7 @@
                 window.history.back();
             }
         </script>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><hr>
     </body>
-</html>
+    
+    {% endblock content %}

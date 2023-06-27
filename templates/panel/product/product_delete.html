@@ -19,7 +19,7 @@
     <p>Are you sure you want to delete <strong>"{{ product.name }}"</strong>?</p>
     <div class="update-buttons">
       <button type="submit" class="update-btn update-btn-delete">Delete</button>
-      <a class="update-btn update-btn-cancel" href="{% url 'product_view' product.pk %}">Cancel</a>
+      <a class="update-btn update-btn-cancel" href="{% url 'product_detail_admin' product.pk %}">Cancel</a>
     </div>
   </form>
 </div>

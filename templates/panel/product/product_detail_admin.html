@@ -8,10 +8,6 @@
             <img src="{{ product.img.url }}" alt={{ product.name }}>
             <h3>{{ product.name }}</h3>
 
-            <div class="content">
-                <span style="text-align:right;"><a href="#">Add to cart</a></span>
-            </div>
-
             <br>
 
             <div class="content">
@@ -32,7 +28,7 @@
 </div>
 
 <br>
-<p><a href="{% url 'product_update' product.pk %}" class="product_update"><b> + Edit product </b></a></p>
-<p><a href="{% url 'product_delete' product.pk %}" class="product_delete"><b> + Delete product </b></a></p>
+<p><a href="{% url 'product_update' product.pk %}" class="product_update"><b> + Edit Product </b></a></p>
+<p><a href="{% url 'product_delete' product.pk %}" class="product_delete"><b> + Delete Product </b></a></p>
 
 {% endblock content %}

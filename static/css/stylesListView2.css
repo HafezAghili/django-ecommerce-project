@@ -39,7 +39,7 @@
     margin-top: 10px;
   }
   
-  .button-edit, .button-delete {
+  .button-edit, .button-delete ,.button-new {
     width: 80px;
     text-align: center;
     margin: 5px 4px;
@@ -66,6 +66,15 @@
     background-color: #b80a0a;
   }
   
+
+  .button-new {
+    background-color: #998a89;
+  }
+  
+  .button-new:hover {
+    background-color: #868788;
+  }
+
   .box-container:before,
   .box-container:after {
     content: '';

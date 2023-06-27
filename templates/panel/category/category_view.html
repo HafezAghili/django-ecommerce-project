@@ -13,6 +13,9 @@
 <br><br><br>
 <p style="text-align:center" class="title">Categories - Admin Panel</p>
 <br><br>
+
+<div align="left" style="margin-left:30px;"><a href="{% url 'category_create' %}"><button class="button-new">+ New</button></a></div>
+
 <div class="box-container">
     {% for category in category_list %}
     <div class="list-item">

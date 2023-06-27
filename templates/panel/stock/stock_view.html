@@ -13,6 +13,10 @@
 <br><br>
 <p style="text-align:center" class="title">Stock - Admin Panel</p>
 <br>
+
+<div align="left" style="margin-left:20px;"><a href="{% url 'stock_create' %}"><button class="button-new">+ New</button></a></div>
+
+
     <p class="branch">Tehran branch<p>
     {% for inventoryproduct in inventoryproduct_list %}
         {% if inventoryproduct.inventory.name == 'Tehran branch' %}

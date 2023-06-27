@@ -199,10 +199,10 @@ header{
 }
 
 .products-container{
-    /* display: flex;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center; */
-    display: grid;
+    justify-content: center;
+    /*display: grid;*/
     grid-template-columns: repeat(auto-fit,minmax(280px,auto));
     gap: 1.5rem;
     margin-top: 2rem;

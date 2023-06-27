@@ -7,7 +7,7 @@
 	<title>HafezAghili's Nuts</title>
 	
 	
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesHome.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesHome1.css' %}" />
     <!--https://boxicons.com/-->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 	<link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
@@ -34,7 +34,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="{% url 'about' %}">About Us</a></li>
             <li><a href="{% url 'product_view' %}">Products</a></li>
-            <li><a href="#branches">Branches</a></li>
+            <li><a href="{% url 'hafez' %}">About Me</a></li>
         </ul>
 
         <!-- icons -->
@@ -104,7 +104,7 @@
                 <p>He is a computer engineer, so he has put a lot of emphasis on online sales.</p>
                 <p>The nut shop has been in business for over a year and has grown to become one of the most well-known and trusted nut exporters on the global market, thanks to the dedication and innovation of its founder.</p>
                 <br>
-                <a href="{% url 'comingsoon' %}" class="btn">Learn More</a>
+                <a href="{% url 'about' %}" class="btn">Learn More</a>
             </div>
         </section>
 

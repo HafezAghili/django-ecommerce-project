@@ -38,7 +38,7 @@
     margin-top: 10px;
   }
   
-  .button-edit, .button-delete {
+  .button-edit, .button-delete ,.button-new {
     width: 80px;
     margin: 0 4px;
     padding: 8px 16px;
@@ -59,6 +59,14 @@
   
   .button-edit:hover {
     background-color: #0c7cd5;
+  }
+
+  .button-new {
+    background-color: #998a89;
+  }
+  
+  .button-new:hover {
+    background-color: #868788;
   }
 
   .button-delete:hover {

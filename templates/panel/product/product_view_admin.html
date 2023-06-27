@@ -8,43 +8,26 @@
     <div class="heading">
         <h2>products - Admin Panel</h2>
     </div>
-
+    <p><a href="{% url 'product_create' %}" class="product_update"><b> + New Product </b></a></p>
     <!-- container -->
     {% for product in product_list %}
-    <div class="post-entry"> 
-    <div class="products-container">
-        <div class="box">
-            <img src="{{ product.img.url }}" alt={{ product.name }}>
-            <h3><a href="{% url 'product_detail_admin' product.pk %}">{{ product.name }}</a></h3>
-            <div class="content">
-                <span>${{ product.price }}</span>
-                <a href="#">Add to cart</a>
+    {% if forloop.counter0|divisibleby:3 %}
+        <div class="post-entry">
+            <div class="products-container">
+    {% endif %}
+                <div class="box">
+                    <img src="{{ product.img.url }}" alt="{{ product.name }}">
+                    <h3><a href="{% url 'product_detail_admin' product.pk %}">{{ product.name }}</a></h3>
+                    <div class="content">
+                        <span>${{ product.price }}</span>
+                        <a href="{% url 'product_detail_admin' product.pk %}">Product Detail</a>
+                    </div>
+                </div>
+    {% if forloop.counter|divisibleby:3 or forloop.last %}
             </div>
         </div>
-
-        <!-- تکرار۱-->
-        <div class="box">
-            <img src="{{ product.img.url }}" alt={{ product.name }}>
-            <h3><a href="{% url 'product_detail_admin' product.pk %}">{{ product.name }}</a></h3>
-            <div class="content">
-                <span>${{ product.price }}</span>
-                <a href="#">Add to cart</a>
-            </div>
-        </div>
-
-        <!-- تکرار۲-->
-        <div class="box">
-            <img src="{{ product.img.url }}" alt={{ product.name }}>
-            <h3><a href="{% url 'product_detail_admin' product.pk %}">{{ product.name }}</a></h3>
-            <div class="content">
-                <span>${{ product.price }}</span>
-                <a href="#">Add to cart</a>
-            </div>
-        </div>
-
-    </div>
-    </div>  
-    {% endfor %}
+    {% endif %}
+{% endfor %}
 </section>
 
 <!--

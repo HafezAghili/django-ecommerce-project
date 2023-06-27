@@ -16,7 +16,7 @@
   <form method="post" class="update-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <p>Are you sure you want to delete <strong>"{{ city.name }}"</strong>?</p>
+    <p>Are you sure you want to delete <strong>"{{ object }}"</strong>?</p>
     <div class="update-buttons">
       <button type="submit" class="update-btn update-btn-delete">Delete</button>
       <a class="update-btn update-btn-cancel" href="{% url 'city_view' %}">Cancel</a>
