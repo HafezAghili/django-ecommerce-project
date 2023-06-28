@@ -69,6 +69,7 @@ Make sure you have python installed.
 ``` 
 
 project should be accessible locally at http://127.0.0.1:8000
+
 ## Features
 
 - Admin panel for controlling inventories, products and orders
@@ -76,3 +77,6 @@ project should be accessible locally at http://127.0.0.1:8000
 - tracking order processing for customers
 - change password
 
+## Support
+
+For support, If this project helped you, please consider starring the repository ⭐❤️ ^^
