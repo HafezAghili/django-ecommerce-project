@@ -22,7 +22,7 @@ HafezAghiliNuts.pythonanywhere.com
 Username : admin
 Password : admin@1234
 
-- Customer account located in Tehran
+- Customer account located Tehran
 Username : tehran
 Password : user@1234
 ```  
