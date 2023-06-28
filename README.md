@@ -14,7 +14,7 @@ This Django project is an online store for selling nuts and dried fruits. It pro
 
 ## Demo
 
-HafezAghiliNuts.pythonanywhere.com
+[Link text Here](http://hafezaghilinuts.pythonanywhere.com/)
 
 ### Test Accounts:
 ```bash
